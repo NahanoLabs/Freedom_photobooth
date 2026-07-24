@@ -58,7 +58,7 @@ export default function Hero() {
               </div>
               <div className="hero__card-label">
                 <span className="hero__card-emoji">🎞️</span>
-                <span>Classic Strip</span>
+                <span>Golden HOur</span>
               </div>
             </div>
 
@@ -68,7 +68,7 @@ export default function Hero() {
               </div>
               <div className="hero__card-label">
                 <span className="hero__card-emoji">📸</span>
-                <span>Golden Hour</span>
+                <span>Good Vibes</span>
               </div>
             </div>
 
@@ -78,7 +78,7 @@ export default function Hero() {
               </div>
               <div className="hero__card-label">
                 <span className="hero__card-emoji">✨</span>
-                <span>Good Vibes</span>
+                <span>Classic Strip</span>
               </div>
             </div>
           </div>
