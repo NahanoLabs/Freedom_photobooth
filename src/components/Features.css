@@ -1,108 +1,18 @@
-/* ========================================
-   FEATURES / SERVICES
-   ======================================== */
+.features { background: var(--color-cream); position: relative; }
+.features__bg { position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 30%, var(--color-yellow-glow) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(201, 138, 138, 0.04) 0%, transparent 40%); pointer-events: none; }
+.features__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); position: relative; z-index: 1; }
+@media (min-width: 640px) { .features__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .features__grid { grid-template-columns: repeat(3, 1fr); } }
 
-.features {
-  background: var(--color-cream);
-  position: relative;
-}
+.features__card { background: var(--color-white-warm); border-radius: var(--radius-lg); padding: var(--space-xl); border: 1px solid rgba(44, 44, 44, 0.04); transition: all var(--transition-base); position: relative; overflow: hidden; }
+.features__card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; transition: height var(--transition-base); }
+.features__card--yellow::after { background: linear-gradient(to right, var(--color-yellow), var(--color-yellow-light)); }
+.features__card--rose::after { background: linear-gradient(to right, var(--color-rose), var(--color-rose-light)); }
+.features__card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.features__card:hover::after { height: 4px; }
 
-.features__bg {
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 20% 30%, var(--color-yellow-glow) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(201, 138, 138, 0.04) 0%, transparent 40%);
-  pointer-events: none;
-}
-
-.features__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-lg);
-  position: relative;
-  z-index: 1;
-}
-
-@media (min-width: 640px) {
-  .features__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .features__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.features__card {
-  background: var(--color-white-warm);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  border: 1px solid rgba(44, 44, 44, 0.04);
-  transition: all var(--transition-base);
-  position: relative;
-  overflow: hidden;
-}
-
-.features__card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  transition: height var(--transition-base);
-}
-
-.features__card--yellow::after {
-  background: linear-gradient(to right, var(--color-yellow), var(--color-yellow-light));
-}
-
-.features__card--rose::after {
-  background: linear-gradient(to right, var(--color-rose), var(--color-rose-light));
-}
-
-.features__card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-}
-
-.features__card:hover::after {
-  height: 4px;
-}
-
-.features__icon {
-  width: 52px;
-  height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  border-radius: var(--radius-md);
-  margin-bottom: var(--space-md);
-}
-
-.features__icon--yellow {
-  background: var(--color-yellow-pale);
-}
-
-.features__icon--rose {
-  background: var(--color-rose-pale);
-}
-
-.features__card-title {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-bottom: var(--space-sm);
-}
-
-.features__card-text {
-  font-size: 0.9rem;
-  color: var(--color-warm-gray);
-  line-height: 1.7;
-  margin: 0;
-}
+.features__icon { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border-radius: var(--radius-md); margin-bottom: var(--space-md); }
+.features__icon--yellow { background: var(--color-yellow-pale); }
+.features__icon--rose { background: var(--color-rose-pale); }
+.features__card-title { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600; margin-bottom: var(--space-sm); }
+.features__card-text { font-size: 0.9rem; color: var(--color-warm-gray); line-height: 1.7; margin: 0; }

@@ -26,8 +26,7 @@ export default function Hero() {
           <p className="hero__description">
             Step into the frame. Classic film strips, modern elegance, and a touch of sass.
             <br />
-            Your memories, beautifully captured —{" "}
-            <span className="text-accent">the old-fashioned way.</span>
+            Your memories, beautifully captured — <span className="text-accent">the old-fashioned way.</span>
           </p>
 
           <div className="hero__actions">

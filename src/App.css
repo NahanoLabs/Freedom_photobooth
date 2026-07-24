@@ -1,42 +1,23 @@
-/* ========================================
-   APP — Root Layout Overrides
-   ======================================== */
+/* Root layout + app-level overrides */
 
 main {
   flex: 1;
 }
 
-/* Smooth section anchoring offset for fixed header */
+/* Give section anchors breathing room under sticky header */
 section[id] {
   scroll-margin-top: 4rem;
 }
 
-/* Selection color */
-::selection {
-  background: var(--color-yellow);
-  color: var(--color-charcoal);
+/* Hide elements by breakpoint */
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
 }
 
-/* Focus visible ring */
-:focus-visible {
-  outline: 2px solid var(--color-yellow);
-  outline-offset: 2px;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-cream);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-yellow-light);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-yellow);
+@media (min-width: 768px) {
+  .hide-desktop {
+    display: none !important;
+  }
 }
