@@ -1,6 +1,5 @@
-import img1 from "../assets/IMG_8712.JPG.jpeg";
 import img2 from "../assets/IMG_9684.JPG.jpeg";
-import img3 from "../assets/IMG_9527.PNG";
+import img4 from "../assets/Photo_strips.PNG";
 import "./Hero.css";
 
 export default function Hero() {
@@ -27,8 +26,7 @@ export default function Hero() {
           <p className="hero__description">
             Step into the frame. Classic film strips, modern elegance, and a touch of sass.
             <br />
-            Your memories, beautifully captured —{" "}
-            <span className="text-accent">the old-fashioned way.</span>
+            Your memories, beautifully captured — <span className="text-accent">the old-fashioned way.</span>
           </p>
 
           <div className="hero__actions">
@@ -52,32 +50,22 @@ export default function Hero() {
 
         <div className="hero__visual">
           <div className="hero__cards">
-            <div className="hero__card hero__card--1">
+            <div className="hero__card hero__card--front">
               <div className="hero__card-image">
                 <img src={img2} alt="Friends posing together inside the vintage photobooth" />
               </div>
               <div className="hero__card-label">
-                <span className="hero__card-emoji">🎞️</span>
-                <span>Golden HOur</span>
-              </div>
-            </div>
-
-            <div className="hero__card hero__card--2">
-              <div className="hero__card-image">
-                <img src={img1} alt="Close up candid photo strip printout" />
-              </div>
-              <div className="hero__card-label">
                 <span className="hero__card-emoji">📸</span>
-                <span>Good Vibes</span>
+                <span>Golden Hour</span>
               </div>
             </div>
 
-            <div className="hero__card hero__card--3">
+            <div className="hero__card hero__card--back">
               <div className="hero__card-image">
-                <img src={img3} alt="Group laughing with vintage photobooth props" />
+                <img src={img4} alt="Photo strip printout from the vintage photobooth" />
               </div>
               <div className="hero__card-label">
-                <span className="hero__card-emoji">✨</span>
+                <span className="hero__card-emoji">🎞️</span>
                 <span>Classic Strip</span>
               </div>
             </div>

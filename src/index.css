@@ -1,31 +1,26 @@
+@import "tailwindcss";
+
 /* ========================================
    FREEDOM PHOTOBOOTH — Design System
    Vintage Modern · Sassy · Fashion
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
-
-/* ---------- CSS Custom Properties ---------- */
-:root {
+@theme {
   /* 🎨 Palette — Warm Vintage with Yellow Focus */
   --color-cream: #FDF6ED;
   --color-cream-dark: #F5E6D3;
   --color-cream-deep: #EDE0CC;
-
   --color-yellow: #E8B84B;
   --color-yellow-light: #F5D98C;
   --color-yellow-pale: #FFF4E0;
   --color-yellow-glow: rgba(232, 184, 75, 0.15);
-
   --color-rose: #C98A8A;
   --color-rose-light: #E8C4C4;
   --color-rose-pale: #F7EBEB;
-
   --color-charcoal: #2C2C2C;
   --color-warm-gray: #8B8078;
   --color-warm-gray-light: #B8ADA5;
   --color-warm-gray-pale: #D5CDD0;
-
   --color-white-warm: #FFFBFA;
   --color-white: #FFFFFF;
 
@@ -64,23 +59,46 @@
 
   /* 📐 Container */
   --container-max: 1200px;
-  --container-padding: 1.5rem;
 }
 
-/* ---------- Reset & Base ---------- */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* ---------- Custom Utilities ---------- */
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-accent {
+    color: var(--color-yellow);
+    font-style: italic;
+  }
+  .stamp {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--color-rose);
+    border: 1.5px solid var(--color-rose-light);
+    border-radius: var(--radius-sm);
+    padding: 0.35rem 0.75rem;
+    transform: rotate(-2deg);
+    opacity: 0.8;
+  }
+  .bg-texture {
+    position: relative;
+  }
+  .bg-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 25% 25%, var(--color-yellow-glow) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(201, 138, 138, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* ---------- Base Styles ---------- */
 
 body {
   font-family: var(--font-body);
@@ -91,24 +109,6 @@ body {
   overflow-x: hidden;
 }
 
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* ---------- Typography ---------- */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 600;
@@ -116,19 +116,9 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-charcoal);
 }
 
-h1 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  letter-spacing: -0.02em;
-}
-
-h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  letter-spacing: -0.01em;
-}
-
-h3 {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-}
+h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.01em; }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
 
 p {
   margin-bottom: var(--space-md);
@@ -136,12 +126,47 @@ p {
   line-height: 1.7;
 }
 
-.text-accent {
-  color: var(--color-yellow);
-  font-style: italic;
+/* Selection */
+::selection {
+  background: var(--color-yellow);
+  color: var(--color-charcoal);
 }
 
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--color-yellow);
+  outline-offset: 2px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-cream); }
+::-webkit-scrollbar-thumb { background: var(--color-yellow-light); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-yellow); }
+
+/* ---------- Animations ---------- */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.8s ease forwards; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+
 /* ---------- Container ---------- */
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .container {
   width: 100%;
   max-width: var(--container-max);
@@ -157,7 +182,6 @@ p {
   }
 }
 
-/* ---------- Section ---------- */
 .section {
   padding: var(--space-3xl) 0;
 }
@@ -192,16 +216,11 @@ p {
   background-color: var(--color-yellow);
 }
 
-.section-title {
-  margin-bottom: var(--space-md);
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  max-width: 600px;
-}
+.section-title { margin-bottom: var(--space-md); }
+.section-subtitle { font-size: 1.1rem; max-width: 600px; }
 
 /* ---------- Buttons ---------- */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -255,31 +274,8 @@ p {
   background-color: var(--color-yellow-glow);
 }
 
-/* ---------- Grid Utilities ---------- */
-.grid {
-  display: grid;
-  gap: var(--space-xl);
-}
-
-.grid-2 {
-  grid-template-columns: 1fr;
-}
-
-.grid-3 {
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 768px) {
-  .grid-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 /* ---------- Card ---------- */
+
 .card {
   background-color: var(--color-white-warm);
   border-radius: var(--radius-lg);
@@ -321,7 +317,8 @@ p {
   border-radius: var(--radius-full);
 }
 
-/* ---------- Decorative Elements ---------- */
+/* ---------- Dividers ---------- */
+
 .divider {
   width: 100%;
   height: 1px;
@@ -340,108 +337,12 @@ p {
   margin: var(--space-2xl) 0;
 }
 
-/* ---------- Tagline / Vintage Stamp ---------- */
-.stamp {
-  display: inline-block;
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-size: 0.85rem;
-  color: var(--color-rose);
-  border: 1.5px solid var(--color-rose-light);
-  border-radius: var(--radius-sm);
-  padding: 0.35rem 0.75rem;
-  transform: rotate(-2deg);
-  opacity: 0.8;
-}
-
-/* ---------- SVG Background Patterns ---------- */
-.bg-texture {
-  position: relative;
-}
-
-.bg-texture::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 25% 25%, var(--color-yellow-glow) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(201, 138, 138, 0.06) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ---------- Keyframes ---------- */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.8s ease forwards;
-}
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-/* ---------- Utility ---------- */
-.text-center {
-  text-align: center;
-}
-
-.flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.gap-sm { gap: var(--space-sm); }
-.gap-md { gap: var(--space-md); }
-.gap-lg { gap: var(--space-lg); }
-.gap-xl { gap: var(--space-xl); }
-
-.mt-md { margin-top: var(--space-md); }
-.mt-lg { margin-top: var(--space-lg); }
-.mt-xl { margin-top: var(--space-xl); }
-.mt-2xl { margin-top: var(--space-2xl); }
-
-.mb-md { margin-bottom: var(--space-md); }
-.mb-lg { margin-bottom: var(--space-lg); }
-.mb-xl { margin-bottom: var(--space-xl); }
-
 /* ---------- Media Queries ---------- */
+
 @media (max-width: 767px) {
-  .hide-mobile {
-    display: none !important;
-  }
+  .hide-mobile { display: none !important; }
 }
 
 @media (min-width: 768px) {
-  .hide-desktop {
-    display: none !important;
-  }
+  .hide-desktop { display: none !important; }
 }

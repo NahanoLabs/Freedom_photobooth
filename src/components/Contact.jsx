@@ -22,21 +22,21 @@ export default function Contact() {
                 <span className="contact__detail-icon">✉️</span>
                 <div>
                   <span className="contact__detail-label">Email</span>
-                  <span className="contact__detail-value">hello@freedomphotobooth.com</span>
+                  <span className="contact__detail-value">photoboothfreedom@gmail.com</span>
                 </div>
               </div>
               <div className="contact__detail">
                 <span className="contact__detail-icon">📞</span>
                 <div>
                   <span className="contact__detail-label">Phone</span>
-                  <span className="contact__detail-value">(555) 123-4567</span>
+                  <span className="contact__detail-value">+256 721 060 335</span>
                 </div>
               </div>
               <div className="contact__detail">
                 <span className="contact__detail-icon">📍</span>
                 <div>
                   <span className="contact__detail-label">Location</span>
-                  <span className="contact__detail-value">Serving all of Metro City</span>
+                  <span className="contact__detail-value">KAMPALA, UGANDA</span>
                 </div>
               </div>
             </div>
