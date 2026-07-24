@@ -1,54 +1,47 @@
-import './Gallery.css'
+import "./Gallery.css";
 
 export default function Gallery() {
   const packages = [
     {
-      name: 'The Classic',
-      price: '249',
-      period: '2 hours',
-      description: 'For intimate gatherings and small celebrations.',
+      name: "The Classic",
+      price: "50K",
+      description: "For intimate gatherings and small celebrations.",
       features: [
-        'Unlimited photo sessions',
-        'Classic 4-frame strips',
-        'Digital gallery link',
-        'Basic prop collection',
-        'Black & white backdrops',
+        "5 photo strips",
+        "10 classic photos",
+        "softcopies and airdrop",
       ],
       highlighted: false,
     },
     {
-      name: 'The Vibe',
-      price: '449',
-      period: '3 hours',
-      description: 'The sweet spot. Most popular for weddings & parties.',
+      name: "The Vibe",
+      price: "200K",
+      description: "The sweet spot. Most popular for weddings & parties.",
       features: [
-        'Unlimited photo sessions',
-        'Classic + wide strips',
-        'Digital gallery + USB',
-        'Full prop collection',
-        'Custom backdrop setup',
-        'Guest photo book',
+        "All in Classic, plus",
+        "40 photo strips",
+        "20 Classic photos",
+        
+        "Full prop collection",
+        "Custom backdrop setup",
       ],
       highlighted: true,
     },
     {
-      name: 'The Premium',
-      price: '749',
-      period: '5 hours',
-      description: 'Go all out. Full event coverage with everything.',
+      name: "The Premium",
+      price: "300k - 1M",
+      description: "Go all out. Full event coverage with everything.",
       features: [
-        'Unlimited photo sessions',
-        'All strip formats',
-        'Instant digital delivery',
-        'VIP prop & accessories',
-        'Two custom backdrops',
-        'Premium guest book',
-        'Dedicated attendant',
-        'Social media booth',
+        "All in Vibe, plus",
+        "All strip formats",
+        "VIP prop & accessories",
+        "Two custom backdrops",
+        "Content creation",
+
       ],
       highlighted: false,
     },
-  ]
+  ];
 
   return (
     <section id="gallery" className="section gallery">
@@ -61,7 +54,8 @@ export default function Gallery() {
             <span className="text-accent">perfect frame</span>
           </h2>
           <p className="section-subtitle">
-            Flexible packages for every occasion. No hidden fees, just great photos.
+            Flexible packages for every occasion. No hidden fees, just great
+            photos.
           </p>
         </div>
 
@@ -69,7 +63,7 @@ export default function Gallery() {
           {packages.map((pkg, index) => (
             <div
               key={index}
-              className={`gallery__card ${pkg.highlighted ? 'gallery__card--highlighted' : ''}`}
+              className={`gallery__card ${pkg.highlighted ? "gallery__card--highlighted" : ""}`}
             >
               {pkg.highlighted && (
                 <span className="gallery__badge">Most Popular</span>
@@ -79,11 +73,12 @@ export default function Gallery() {
               <p className="gallery__card-desc">{pkg.description}</p>
 
               <div className="gallery__price">
-                <span className="gallery__price-amount">${pkg.price}</span>
-                <span className="gallery__price-period">/{pkg.period}</span>
+                <span className="gallery__price-amount">UGX{pkg.price}</span>
               </div>
 
-              <button className={`btn ${pkg.highlighted ? 'btn-primary' : 'btn-outline'} gallery__cta`}>
+              <button
+                className={`btn ${pkg.highlighted ? "btn-primary" : "btn-outline"} gallery__cta`}
+              >
                 Book This Package
               </button>
 
@@ -92,7 +87,9 @@ export default function Gallery() {
               <ul className="gallery__features">
                 {pkg.features.map((feature, idx) => (
                   <li key={idx} className="gallery__feature">
-                    <span className="gallery__check" aria-hidden="true">✦</span>
+                    <span className="gallery__check" aria-hidden="true">
+                      ✦
+                    </span>
                     {feature}
                   </li>
                 ))}
@@ -102,10 +99,15 @@ export default function Gallery() {
         </div>
 
         <div className="gallery__note">
-          <p>All packages include setup, breakdown, and standard travel within 30 miles.</p>
-          <p>Custom quotes available for large events and destination bookings.</p>
+          <p>
+            All packages include setup, breakdown, and standard travel within 30
+            miles.
+          </p>
+          <p>
+            Custom quotes available for large events and destination bookings.
+          </p>
         </div>
       </div>
     </section>
-  )
+  );
 }
