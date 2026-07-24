@@ -1,9 +1,12 @@
-import './Hero.css'
+import img1 from "../assets/IMG_8712.JPG.jpeg";
+import img2 from "../assets/IMG_9684.JPG.jpeg";
+import img3 from "../assets/IMG_9527.PNG";
+import "./Hero.css";
 
 export default function Hero() {
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section className="hero">
@@ -24,15 +27,16 @@ export default function Hero() {
           <p className="hero__description">
             Step into the frame. Classic film strips, modern elegance, and a touch of sass.
             <br />
-            Your memories, beautifully captured — <span className="text-accent">the old-fashioned way.</span>
+            Your memories, beautifully captured —{" "}
+            <span className="text-accent">the old-fashioned way.</span>
           </p>
 
           <div className="hero__actions">
-            <button className="btn btn-primary" onClick={() => scrollTo('gallery')}>
+            <button className="btn btn-primary" onClick={() => scrollTo("gallery")}>
               View Packages
               <span aria-hidden="true">→</span>
             </button>
-            <button className="btn btn-outline" onClick={() => scrollTo('about')}>
+            <button className="btn btn-outline" onClick={() => scrollTo("about")}>
               Explore the Vibe
             </button>
           </div>
@@ -49,20 +53,25 @@ export default function Hero() {
         <div className="hero__visual">
           <div className="hero__photo-frame">
             <div className="hero__photo-strip">
-              {/* Placeholder photo frames */}
               <div className="hero__photo hero__photo--1">
                 <div className="hero__photo-inner">
-                  <span className="hero__photo-placeholder">📸</span>
+                  <span className="hero__photo-placeholder">
+                    <img src={img1} alt="Friends posing together inside the vintage photobooth" />
+                  </span>
                 </div>
               </div>
               <div className="hero__photo hero__photo--2">
                 <div className="hero__photo-inner">
-                  <span className="hero__photo-placeholder">✨</span>
+                  <span className="hero__photo-placeholder">
+                    <img src={img2} alt="Close up candid photo strip printout" />
+                  </span>
                 </div>
               </div>
               <div className="hero__photo hero__photo--3">
                 <div className="hero__photo-inner">
-                  <span className="hero__photo-placeholder">🎞️</span>
+                  <span className="hero__photo-placeholder">
+                    <img src={img3} alt="Group laughing with vintage photobooth props" />
+                  </span>
                 </div>
               </div>
             </div>
@@ -74,5 +83,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

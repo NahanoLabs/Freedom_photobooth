@@ -151,7 +151,6 @@
   position: relative;
   width: 100%;
   max-width: 360px;
-  aspect-ratio: 3 / 4;
 }
 
 .hero__photo-strip {
@@ -159,7 +158,6 @@
   flex-direction: column;
   gap: 0;
   width: 100%;
-  height: 100%;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--color-white);
@@ -169,8 +167,7 @@
 }
 
 .hero__photo {
-  flex: 1;
-  padding: 0.75rem;
+  aspect-ratio: 4 / 3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,33 +180,43 @@
 .hero__photo-inner {
   width: 100%;
   height: 100%;
-  background: var(--color-cream-deep);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
   overflow: hidden;
 }
 
+/* Vintage warm gradient overlay on photos */
 .hero__photo-inner::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
     135deg,
-    var(--color-yellow-glow) 0%,
+    rgba(232, 184, 75, 0.15) 0%,
     transparent 50%,
-    var(--color-rose-pale) 100%
+    rgba(201, 138, 138, 0.08) 100%
   );
-  opacity: 0.3;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .hero__photo-placeholder {
-  font-size: 2.5rem;
+  display: block;
+  width: 100%;
+  height: 100%;
   position: relative;
   z-index: 1;
-  filter: grayscale(0.2);
+}
+
+.hero__photo-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.hero__photo:hover .hero__photo-placeholder img {
+  transform: scale(1.05);
 }
 
 .hero__frame-border {
