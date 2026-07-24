@@ -14,7 +14,7 @@ export default function Hero() {
 
       <div className="container hero__inner">
         <div className="hero__content">
-          <span className="stamp hero__stamp">Est. 2024</span>
+          <span className="stamp hero__stamp">Est. 2026</span>
 
           <h1 className="hero__title animate-fade-in-up">
             <span className="hero__title-line">Oh, Snap!</span>
