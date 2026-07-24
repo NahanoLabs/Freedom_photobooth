@@ -1,4 +1,5 @@
-import './About.css'
+import "./About.css";
+import happy_image from "../assets/IMG_9119.JPG.jpeg";
 
 export default function About() {
   return (
@@ -21,16 +22,16 @@ export default function About() {
             <p>
               We blend the warmth of classic film-strip photography with a
               contemporary edge. Our vintage-inspired booth, curated props, and
-              signature golden-hour lighting create photos that feel timeless
-              — with just the right amount of attitude.
+              signature golden-hour lighting create photos that feel timeless —
+              with just the right amount of attitude.
             </p>
             <div className="about__stats">
               <div className="about__stat">
-                <span className="about__stat-number">500+</span>
+                <span className="about__stat-number">10+</span>
                 <span className="about__stat-label">Events Captured</span>
               </div>
               <div className="about__stat">
-                <span className="about__stat-number">15K</span>
+                <span className="about__stat-number">100+</span>
                 <span className="about__stat-label">Photos Printed</span>
               </div>
               <div className="about__stat">
@@ -40,7 +41,13 @@ export default function About() {
             </div>
           </div>
 
-          <div className="about__visual">
+          <div>
+            <span>
+              <img src={happy_image} alt="Happy image of 3 dudes lauging" />
+            </span>
+          </div>
+
+          {/* <div className="about__visual">
             <div className="about__card">
               <div className="about__card-icon">🎞️</div>
               <h3 className="about__card-title">Classic Strips</h3>
@@ -62,9 +69,9 @@ export default function About() {
                 Curated backdrops and props for every vibe.
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
-  )
+  );
 }
