@@ -1,5 +1,5 @@
-import img2 from "../assets/IMG_9684.JPG.jpeg";
-import img4 from "../assets/Photo_strips.PNG";
+import imgWide from "../assets/IMG_9684.JPG.jpeg";
+import imgStrip from "../assets/Multiple strips.jpeg";
 
 export default function Hero() {
   const scrollTo = (id) => {
@@ -9,9 +9,9 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden py-24">
       {/* Background blobs */}
-      <div className="absolute rounded-full bg-yellow-glow opacity-40 pointer-events-none" style={{ width: 600, height: 600, top: '-10%', right: '-5%', filter: 'blur(80px)', animation: 'float 8s ease-in-out infinite' }} aria-hidden="true" />
+      <div className="absolute rounded-full pointer-events-none" style={{ width: 600, height: 600, top: '-10%', right: '-5%', background: 'var(--color-yellow-glow)', filter: 'blur(80px)', opacity: 0.4, animation: 'float 8s ease-in-out infinite' }} aria-hidden="true" />
       <div className="absolute rounded-full pointer-events-none" style={{ width: 400, height: 400, bottom: '10%', left: '-5%', background: 'rgba(201,138,138,0.08)', filter: 'blur(80px)', animation: 'float 6s ease-in-out infinite reverse' }} aria-hidden="true" />
-      <div className="absolute rounded-full bg-yellow-glow pointer-events-none" style={{ width: 300, height: 300, bottom: '20%', right: '20%', filter: 'blur(80px)', opacity: 0.2, animation: 'float 10s ease-in-out infinite' }} aria-hidden="true" />
+      <div className="absolute rounded-full pointer-events-none" style={{ width: 300, height: 300, bottom: '20%', right: '20%', background: 'var(--color-yellow-glow)', filter: 'blur(80px)', opacity: 0.2, animation: 'float 10s ease-in-out infinite' }} aria-hidden="true" />
 
       <div className="container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Left: Content */}
@@ -19,7 +19,7 @@ export default function Hero() {
           <span className="stamp mb-6">Est. 2026</span>
 
           <h1 className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-            <span className="block text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight" style={{ background: 'linear-gradient(135deg, var(--color-charcoal) 30%, var(--color-yellow) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <span className="block font-['Party'] text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight" style={{ background: 'linear-gradient(135deg, var(--color-charcoal) 30%, var(--color-yellow) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
               Oh, Snap!
             </span>
             <span className="block text-xl sm:text-2xl mt-2 font-normal italic text-warm-gray tracking-wide">
@@ -50,24 +50,23 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right: Two clean images — strip is bigger and dominant */}
-        <div className="flex flex-col sm:flex-row gap-4 lg:gap-5 items-stretch">
-          {/* Left image: square, smaller */}
-          <div className="w-full sm:w-2/5 aspect-square rounded-2xl overflow-hidden shadow-lg">
+        {/* Right: Two overlapping images with white borders */}
+        <div className="relative flex items-center justify-center" style={{ minHeight: 420 }}>
+          {/* Back image: wide landscape, white border, behind */}
+          <div className="absolute w-[85%] aspect-video rounded-2xl overflow-hidden shadow-lg border-4 border-white">
             <img
-              src={img2}
-              alt="Friends posing together inside the vintage photobooth"
+              src={imgWide}
+              alt="Wide photobooth shot"
               className="w-full h-full object-cover"
             />
           </div>
 
-          {/* Right image: strip, taller — draws the eye */}
-          <div className="w-full sm:w-3/5 rounded-2xl overflow-hidden shadow-xl">
+          {/* Front image: strip, taller, white border, overlapping */}
+          <div className="relative ml-auto mt-12 w-[60%] aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
             <img
-              src={img4}
-              alt="Photo strip printout from the vintage photobooth"
+              src={imgStrip}
+              alt="Classic photo strip printout"
               className="w-full h-full object-cover"
-              style={{ aspectRatio: '3/4' }}
             />
           </div>
         </div>
