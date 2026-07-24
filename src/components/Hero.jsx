@@ -51,31 +51,36 @@ export default function Hero() {
         </div>
 
         <div className="hero__visual">
-          <div className="hero__photo-frame">
-            <div className="hero__photo-strip">
-              <div className="hero__photo hero__photo--1">
-                <div className="hero__photo-inner">
-                  <span className="hero__photo-placeholder">
-                    <img src={img1} alt="Friends posing together inside the vintage photobooth" />
-                  </span>
-                </div>
+          <div className="hero__cards">
+            <div className="hero__card hero__card--1">
+              <div className="hero__card-image">
+                <img src={img2} alt="Friends posing together inside the vintage photobooth" />
               </div>
-              <div className="hero__photo hero__photo--2">
-                <div className="hero__photo-inner">
-                  <span className="hero__photo-placeholder">
-                    <img src={img2} alt="Close up candid photo strip printout" />
-                  </span>
-                </div>
-              </div>
-              <div className="hero__photo hero__photo--3">
-                <div className="hero__photo-inner">
-                  <span className="hero__photo-placeholder">
-                    <img src={img3} alt="Group laughing with vintage photobooth props" />
-                  </span>
-                </div>
+              <div className="hero__card-label">
+                <span className="hero__card-emoji">🎞️</span>
+                <span>Classic Strip</span>
               </div>
             </div>
-            <div className="hero__frame-border" aria-hidden="true" />
+
+            <div className="hero__card hero__card--2">
+              <div className="hero__card-image">
+                <img src={img1} alt="Close up candid photo strip printout" />
+              </div>
+              <div className="hero__card-label">
+                <span className="hero__card-emoji">📸</span>
+                <span>Golden Hour</span>
+              </div>
+            </div>
+
+            <div className="hero__card hero__card--3">
+              <div className="hero__card-image">
+                <img src={img3} alt="Group laughing with vintage photobooth props" />
+              </div>
+              <div className="hero__card-label">
+                <span className="hero__card-emoji">✨</span>
+                <span>Good Vibes</span>
+              </div>
+            </div>
           </div>
           <p className="hero__caption">
             <span className="stamp">Your shot, your story</span>
