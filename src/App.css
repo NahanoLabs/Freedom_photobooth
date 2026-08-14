@@ -1,23 +1,2 @@
-/* Root layout + app-level overrides */
-
-main {
-  flex: 1;
-}
-
-/* Give section anchors breathing room under sticky header */
-section[id] {
-  scroll-margin-top: 4rem;
-}
-
-/* Hide elements by breakpoint */
-@media (max-width: 767px) {
-  .hide-mobile {
-    display: none !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .hide-desktop {
-    display: none !important;
-  }
-}
+main { display: block; }
+section[id] { scroll-margin-top: 80px; }

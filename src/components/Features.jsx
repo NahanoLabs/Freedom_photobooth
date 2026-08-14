@@ -1,40 +1,5 @@
-import "./Features.css";
+const details = [['01', 'Camera', 'Get in frame. The first click is always the easiest.'], ['02', 'Touch', 'Choose your moment and make it yours.'], ['03', 'Print', 'Leave with a tangible keepsake, not just a notification.'], ['04', 'Share', 'Digital delivery for everyone who wants the memory now.']]
 
-export default function Features() {
-  const features = [
-    { icon: '🎞️', title: 'Classic Film Strips', description: 'Authentic four-frame photo strips on premium matte paper. Just like the old photo booths.', accent: 'yellow' },
-    { icon: '📸', title: 'Signature Lighting', description: 'Our signature golden-hour setup ensures everyone looks their absolute best — every time.', accent: 'rose' },
-    { icon: '🎭', title: 'Curated Props Collection', description: 'Vintage hats, bold frames, sassy signs — a rotating collection that keeps every session fresh.', accent: 'yellow' },
-    { icon: '📱', title: 'Instant Digital Delivery', description: 'Get your photos digitally within minutes. Share them before the confetti even settles.', accent: 'rose' },
-    { icon: '🎨', title: 'Custom Backdrops', description: 'From classic velvet to modern minimalist — choose a backdrop that matches your vibe.', accent: 'yellow' },
-    { icon: '🎪', title: 'Full Event Setup', description: 'Weddings, birthdays, corporate events — we bring the booth, you bring the energy.', accent: 'rose' },
-  ];
-
-  return (
-    <section id="features" className="section features">
-      <div className="features__bg" aria-hidden="true" />
-      <div className="container relative z-10">
-        <div className="text-center">
-          <span className="section-label">What We Offer</span>
-          <h2 className="section-title">
-            Everything you need for the<br />
-            <span className="text-accent">perfect shot</span>
-          </h2>
-          <p className="section-subtitle" style={{ margin: '0 auto var(--space-2xl)' }}>
-            From vintage strips to digital delivery — we've got the whole frame covered.
-          </p>
-        </div>
-
-        <div className="features__grid">
-          {features.map((feature, index) => (
-            <div key={index} className={`features__card features__card--${feature.accent}`}>
-              <div className={`features__icon features__icon--${feature.accent}`}>{feature.icon}</div>
-              <h3 className="features__card-title">{feature.title}</h3>
-              <p className="features__card-text">{feature.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+export default function Features({ strips }) {
+  return <section className="details section-dark"><div className="section-inner"><div className="details-heading"><p className="eyebrow">02 / The experience</p><h2>Old-school keepsake.<br />Modern delivery.</h2><img src={strips} alt="Freedom Photobooth photo strip keepsake" /></div><div className="details-list">{details.map(([number, title, text]) => <article className="detail-row" key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
 }
