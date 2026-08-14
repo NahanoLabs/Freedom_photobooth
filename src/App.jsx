@@ -14,7 +14,7 @@ import friendsImage from './assets/IMG_9684.JPG.jpeg'
 import flowerImage from './assets/IMG_9683.JPG.jpeg'
 import stripsImage from './assets/Photo_strips.PNG'
 
-export const assets = {
+const assets = {
   boothHero: heroImage,
   eventHero: groupImage,
   portrait: portraitImage,
@@ -30,7 +30,7 @@ function App() {
       <Header />
       <main>
         <Hero image={assets.boothHero} />
-        <About image={assets.eventHero} />
+        <About assets={assets} />
         <Features strips={assets.strips} />
         <Gallery assets={assets} />
         <Contact />
