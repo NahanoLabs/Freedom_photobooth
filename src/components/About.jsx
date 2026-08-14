@@ -1,63 +1,23 @@
-import "./About.css";
+import { useState } from 'react'
 
-export default function About() {
-  return (
-    <section id="about" className="section about">
-      <div className="container">
-        <div className="about__grid">
-          <div className="about__content">
-            <span className="section-label">Our Story</span>
-            <h2 className="section-title about__title">
-              Where vintage charm meets<br />
-              <span className="text-accent">modern sass</span>
-            </h2>
-            <div className="divider about__divider" />
-            <p>
-              Freedom Photobooth isn't just about taking pictures — it's about
-              capturing the energy, the laughter, and the perfectly imperfect
-              moments that make life worth remembering.
-            </p>
-            <p>
-              We blend the warmth of classic film-strip photography with a
-              contemporary edge. Our vintage-inspired booth, curated props, and
-              signature golden-hour lighting create photos that feel timeless
-              — with just the right amount of attitude.
-            </p>
-            <div className="about__stats">
-              <div className="about__stat">
-                <span className="about__stat-number">500+</span>
-                <span className="about__stat-label">Events Captured</span>
-              </div>
-              <div className="about__stat">
-                <span className="about__stat-number">15K</span>
-                <span className="about__stat-label">Photos Printed</span>
-              </div>
-              <div className="about__stat">
-                <span className="about__stat-number">100%</span>
-                <span className="about__stat-label">Sass Guaranteed</span>
-              </div>
-            </div>
-          </div>
+const features = [
+  { number: '01', title: 'Camera', text: 'Get in frame. The first click is always the easiest.', imageKey: 'boothHero' },
+  { number: '02', title: 'Touch', text: 'Choose your moment and make it yours.', imageKey: 'eventHero' },
+  { number: '03', title: 'Print', text: 'Leave with a tangible keepsake, not just a notification.', imageKey: 'strips' },
+  { number: '04', title: 'Share', text: 'Digital delivery for everyone who wants the memory now.', imageKey: 'portrait' },
+]
 
-          <div className="about__visual">
-            <div className="about__card">
-              <div className="about__card-icon">🎞️</div>
-              <h3 className="about__card-title">Classic Strips</h3>
-              <p className="about__card-text">Four frames. One strip. A lifetime of memories.</p>
-            </div>
-            <div className="about__card about__card--alt">
-              <div className="about__card-icon">📱</div>
-              <h3 className="about__card-title">Digital First</h3>
-              <p className="about__card-text">Share instantly. Your photos, your way.</p>
-            </div>
-            <div className="about__card">
-              <div className="about__card-icon">✨</div>
-              <h3 className="about__card-title">Styled to Perfection</h3>
-              <p className="about__card-text">Curated backdrops and props for every vibe.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+export default function About({ assets }) {
+  const [active, setActive] = useState(0)
+  const current = features[active]
+  return <section className="product section-light" id="experience">
+    <div className="section-inner product-grid">
+      <div><p className="eyebrow">01 / Meet Freedom</p><h2>The booth is the invitation.</h2><p className="section-lede">A physical experience designed to pull people out of the crowd and into the frame. See how it works, then imagine it at your event.</p><a className="text-link dark-link" href="#gallery">See it in the wild <span aria-hidden="true">→</span></a></div>
+      <figure className="product-image product-explorer"><img key={current.imageKey} src={assets[current.imageKey]} alt={`${current.title} detail of the Freedom photobooth experience`} /><figcaption>{current.number} / {current.title}</figcaption></figure>
+    </div>
+    <div className="section-inner explorer-controls" role="tablist" aria-label="Explore Freedom features">
+      {features.map((item, index) => <button className={`explorer-tab ${active === index ? 'is-active' : ''}`} type="button" role="tab" aria-selected={active === index} key={item.number} onClick={() => setActive(index)}><span>{item.number}</span><strong>{item.title}</strong><small>{item.text}</small></button>)}
+    </div>
+  </section>
 }
+

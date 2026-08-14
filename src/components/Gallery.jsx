@@ -1,113 +1,21 @@
-import "./Gallery.css";
+import { useEffect, useState } from 'react'
 
-export default function Gallery() {
-  const packages = [
-    {
-      name: "The Classic",
-      price: "50K",
-      description: "For intimate gatherings and small celebrations.",
-      features: [
-        "5 photo strips",
-        "10 classic photos",
-        "softcopies and airdrop",
-      ],
-      highlighted: false,
-    },
-    {
-      name: "The Vibe",
-      price: "200K",
-      description: "The sweet spot. Most popular for weddings & parties.",
-      features: [
-        "All in Classic, plus",
-        "40 photo strips",
-        "20 Classic photos",
-        
-        "Full prop collection",
-        "Custom backdrop setup",
-      ],
-      highlighted: true,
-    },
-    {
-      name: "The Premium",
-      price: "300k - 1M",
-      description: "Go all out. Full event coverage with everything.",
-      features: [
-        "All in Vibe, plus",
-        "All strip formats",
-        "VIP prop & accessories",
-        "Two custom backdrops",
-        "Content creation",
+const packages = [{ name: 'Classic', price: 'UGX 50K', items: ['5 photo strips', '10 classic photos', 'Softcopies / AirDrop'] }, { name: 'Vibe', price: 'UGX 200K', popular: true, items: ['Everything in Classic', '40 photo strips', '20 classic photos', 'Full prop collection', 'Custom backdrop setup'] }, { name: 'Premium', price: 'From UGX 300K', items: ['Everything in Vibe', 'All strip formats', 'VIP props & accessories', 'Two custom backdrops', 'Content creation'] }]
 
-      ],
-      highlighted: false,
-    },
-  ];
-
-  return (
-    <section id="gallery" className="section gallery">
-      <div className="container">
-        <div className="gallery__header">
-          <span className="section-label">Packages</span>
-          <h2 className="section-title">
-            Choose your
-            <br />
-            <span className="text-accent">perfect frame</span>
-          </h2>
-          <p className="section-subtitle">
-            Flexible packages for every occasion. No hidden fees, just great
-            photos.
-          </p>
-        </div>
-
-        <div className="gallery__grid">
-          {packages.map((pkg, index) => (
-            <div
-              key={index}
-              className={`gallery__card ${pkg.highlighted ? "gallery__card--highlighted" : ""}`}
-            >
-              {pkg.highlighted && (
-                <span className="gallery__badge">Most Popular</span>
-              )}
-
-              <h3 className="gallery__card-name">{pkg.name}</h3>
-              <p className="gallery__card-desc">{pkg.description}</p>
-
-              <div className="gallery__price">
-                <span className="gallery__price-amount">UGX{pkg.price}</span>
-              </div>
-
-              <button
-                className={`btn ${pkg.highlighted ? "btn-primary" : "btn-outline"} gallery__cta`}
-              >
-                Book This Package
-              </button>
-
-              <hr className="divider-dashed" />
-
-              <ul className="gallery__features">
-                {pkg.features.map((feature, idx) => (
-                  <li key={idx} className="gallery__feature">
-                    <span className="gallery__check" aria-hidden="true">
-                      ✦
-                    </span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div className="gallery__note">
-          <p>
-            All packages include setup, breakdown, and standard travel within 30
-            miles.
-          </p>
-          <p>
-            Custom quotes available for large events and destination bookings.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
+export default function Gallery({ assets }) {
+  const [selected, setSelected] = useState(null)
+  const [compare, setCompare] = useState(false)
+  const images = assets.gallery
+  useEffect(() => {
+    if (selected === null) return undefined
+    const onKey = (event) => { if (event.key === 'Escape') setSelected(null); if (event.key === 'ArrowRight') setSelected((selected + 1) % images.length); if (event.key === 'ArrowLeft') setSelected((selected - 1 + images.length) % images.length) }
+    window.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = '' }
+  }, [selected, images.length])
+  return <>
+    <section className="gallery section-light" id="gallery"><div className="section-inner"><div className="gallery-intro"><div><p className="eyebrow">03 / In the wild</p><h2>Some moments deserve more than a camera roll.</h2></div><p className="gallery-hint">Click a frame to explore →</p></div><div className="gallery-grid">{images.map((image, index) => <button className={`gallery-frame ${index === 0 ? 'gallery-large' : ''}`} type="button" key={image} onClick={() => setSelected(index)}><img src={image} alt={['Three friends sharing a candid moment', 'Portrait at an evening event', 'Two friends laughing together', 'Friends enjoying a creative event moment'][index]} /><span>View {String(index + 1).padStart(2, '0')}</span></button>)}</div><div className="proof"><div><strong>500+</strong><span>Events Captured</span></div><div><strong>15K+</strong><span>Photos Printed</span></div></div></div></section>
+    <section className="packages section-light" id="packages"><div className="section-inner"><div className="packages-heading"><p className="eyebrow">04 / Packages</p><h2>Pick your<br />kind of keepsake.</h2><button className="text-link dark-link compare-button" type="button" onClick={() => setCompare(!compare)}>{compare ? 'Hide comparison' : 'Compare packages'} <span aria-hidden="true">{compare ? '↑' : '→'}</span></button></div><div className="package-list">{packages.map((pkg) => <article className={`package ${pkg.popular ? 'is-popular' : ''}`} key={pkg.name}><div className="package-top"><h3>{pkg.name}</h3>{pkg.popular && <span>Most Popular</span>}</div><p className="package-price">{pkg.price}</p><ul>{pkg.items.map((item) => <li key={item}>{item}</li>)}</ul><a href="#contact" className="text-link dark-link">Choose {pkg.name} <span aria-hidden="true">→</span></a></article>)}</div>{compare && <div className="comparison" aria-label="Package comparison"><div><span>Photo strips</span><b>5</b><b>40</b><b>Custom</b></div><div><span>Classic photos</span><b>10</b><b>20</b><b>Included</b></div><div><span>Props</span><b>—</b><b>Full set</b><b>VIP</b></div><div><span>Backdrop</span><b>—</b><b>Custom</b><b>2 custom</b></div></div>}</div></section>
+    {selected !== null && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image viewer" onClick={() => setSelected(null)}><button className="lightbox-close" type="button" aria-label="Close image viewer" onClick={() => setSelected(null)}>Close</button><button className="lightbox-arrow lightbox-prev" type="button" aria-label="Previous image" onClick={(event) => { event.stopPropagation(); setSelected((selected - 1 + images.length) % images.length) }}>←</button><img src={images[selected]} alt="Expanded Freedom Photobooth event moment" onClick={(event) => event.stopPropagation()} /><button className="lightbox-arrow lightbox-next" type="button" aria-label="Next image" onClick={(event) => { event.stopPropagation(); setSelected((selected + 1) % images.length) }}>→</button></div>}
+  </>
 }
